@@ -1,0 +1,48 @@
+issue_id,source_system,entity_id,issue_type,severity,description,fde_action
+ISS-0001,scheduling.db,A0109,MISSING_DOCTOR,AUDIT_NOTE,Appointment 'A0109' has no assigned doctor (walk-in slot or unassigned).,PRESERVE_WITH_UNASSIGNED_FLAG
+ISS-0002,scheduling.db,A0077,DUPLICATE_APPOINTMENT_ID,WARNING,Duplicate appointment_id 'A0077' found in scheduling database.,DEDUPLICATE_KEEP_FIRST
+ISS-0003,scheduling.db,A0217,MISSING_DOCTOR,AUDIT_NOTE,Appointment 'A0217' has no assigned doctor (walk-in slot or unassigned).,PRESERVE_WITH_UNASSIGNED_FLAG
+ISS-0004,scheduling.db,A0177,MISSING_DOCTOR,AUDIT_NOTE,Appointment 'A0177' has no assigned doctor (walk-in slot or unassigned).,PRESERVE_WITH_UNASSIGNED_FLAG
+ISS-0005,scheduling.db,A0164,DUPLICATE_APPOINTMENT_ID,WARNING,Duplicate appointment_id 'A0164' found in scheduling database.,DEDUPLICATE_KEEP_FIRST
+ISS-0006,scheduling.db,A0078,MISSING_DOCTOR,AUDIT_NOTE,Appointment 'A0078' has no assigned doctor (walk-in slot or unassigned).,PRESERVE_WITH_UNASSIGNED_FLAG
+ISS-0007,scheduling.db,A0117,MISSING_DOCTOR,AUDIT_NOTE,Appointment 'A0117' has no assigned doctor (walk-in slot or unassigned).,PRESERVE_WITH_UNASSIGNED_FLAG
+ISS-0008,scheduling.db,A0151,DUPLICATE_APPOINTMENT_ID,WARNING,Duplicate appointment_id 'A0151' found in scheduling database.,DEDUPLICATE_KEEP_FIRST
+ISS-0009,scheduling.db,A0089,DUPLICATE_APPOINTMENT_ID,WARNING,Duplicate appointment_id 'A0089' found in scheduling database.,DEDUPLICATE_KEEP_FIRST
+ISS-0010,scheduling.db,A0065,MISSING_DOCTOR,AUDIT_NOTE,Appointment 'A0065' has no assigned doctor (walk-in slot or unassigned).,PRESERVE_WITH_UNASSIGNED_FLAG
+ISS-0011,kiosk_events.json,WALKIN_W1,UNMATCHED_WALKIN_EVENTS,WARNING,Walk-in patient kiosk events detected for patient_id_kiosk='W1' with no matching appointment_id.,SEGREGATE_WALKIN_METRICS
+ISS-0012,kiosk_events.json,WALKIN_W2,UNMATCHED_WALKIN_EVENTS,WARNING,Walk-in patient kiosk events detected for patient_id_kiosk='W2' with no matching appointment_id.,SEGREGATE_WALKIN_METRICS
+ISS-0013,kiosk_events.json,WALKIN_W3,UNMATCHED_WALKIN_EVENTS,WARNING,Walk-in patient kiosk events detected for patient_id_kiosk='W3' with no matching appointment_id.,SEGREGATE_WALKIN_METRICS
+ISS-0014,kiosk_events.json,A0129,OUT_OF_ORDER_TIMESTAMPS,ERROR,Appointment 'A0129' has impossible ordering: triage_start (2026-09-13T08:22:00) is before check_in (2026-09-13T08:37:00).,QUARANTINE_AFFECTED_INTERVALS
+ISS-0015,kiosk_events.json,A0061,INCOMPLETE_KIOSK_EVENTS,WARNING,Appointment 'A0061' has incomplete stages. Missing: ['consult_end'].,CALCULATE_PARTIAL_INTERVALS
+ISS-0016,kiosk_events.json,A0015,OUT_OF_ORDER_TIMESTAMPS,ERROR,Appointment 'A0015' has impossible ordering: triage_start (2026-09-03T12:01:00) is before check_in (2026-09-03T12:05:00).,QUARANTINE_AFFECTED_INTERVALS
+ISS-0017,kiosk_events.json,A0206,INCOMPLETE_KIOSK_EVENTS,WARNING,Appointment 'A0206' has incomplete stages. Missing: ['check_in'].,CALCULATE_PARTIAL_INTERVALS
+ISS-0018,kiosk_events.json,A0035,OUT_OF_ORDER_TIMESTAMPS,ERROR,Appointment 'A0035' has impossible ordering: triage_start (2026-09-14T11:11:00) is before check_in (2026-09-14T11:17:00).,QUARANTINE_AFFECTED_INTERVALS
+ISS-0019,kiosk_events.json,A0124,INCOMPLETE_KIOSK_EVENTS,WARNING,Appointment 'A0124' has incomplete stages. Missing: ['check_in'].,CALCULATE_PARTIAL_INTERVALS
+ISS-0020,kiosk_events.json,A0134,INCOMPLETE_KIOSK_EVENTS,WARNING,Appointment 'A0134' has incomplete stages. Missing: ['consult_start'].,CALCULATE_PARTIAL_INTERVALS
+ISS-0021,kiosk_events.json,A0125,INCOMPLETE_KIOSK_EVENTS,WARNING,Appointment 'A0125' has incomplete stages. Missing: ['consult_end'].,CALCULATE_PARTIAL_INTERVALS
+ISS-0022,kiosk_events.json,A0213,INCOMPLETE_KIOSK_EVENTS,WARNING,Appointment 'A0213' has incomplete stages. Missing: ['consult_start'].,CALCULATE_PARTIAL_INTERVALS
+ISS-0023,kiosk_events.json,A0150,INCOMPLETE_KIOSK_EVENTS,WARNING,Appointment 'A0150' has incomplete stages. Missing: ['triage_start'].,CALCULATE_PARTIAL_INTERVALS
+ISS-0024,kiosk_events.json,A0151,OUT_OF_ORDER_TIMESTAMPS,ERROR,Appointment 'A0151' has impossible ordering: triage_end (2026-09-08T14:04:00) is before triage_start (2026-09-08T14:19:00).,QUARANTINE_AFFECTED_INTERVALS
+ISS-0025,kiosk_events.json,A0140,OUT_OF_ORDER_TIMESTAMPS,ERROR,Appointment 'A0140' has impossible ordering: triage_start (2026-09-11T13:05:00) is before check_in (2026-09-11T13:31:00).,QUARANTINE_AFFECTED_INTERVALS
+ISS-0026,kiosk_events.json,A0065,INCOMPLETE_KIOSK_EVENTS,WARNING,Appointment 'A0065' has incomplete stages. Missing: ['triage_start'].,CALCULATE_PARTIAL_INTERVALS
+ISS-0027,kiosk_events.json,A0073,OUT_OF_ORDER_TIMESTAMPS,ERROR,Appointment 'A0073' has impossible ordering: triage_start (2026-09-05T08:40:00) is before check_in (2026-09-05T08:45:00).,QUARANTINE_AFFECTED_INTERVALS
+ISS-0028,billing_log.csv,A0157,UNRECONCILED_BILLING,WARNING,Completed appointment 'A0157' is missing from billing_log.csv (unreconciled / late entry).,FLAG_UNRECONCILED_REVENUE
+ISS-0029,billing_log.csv,A0041,UNRECONCILED_BILLING,WARNING,Completed appointment 'A0041' is missing from billing_log.csv (unreconciled / late entry).,FLAG_UNRECONCILED_REVENUE
+ISS-0030,billing_log.csv,A0155,UNRECONCILED_BILLING,WARNING,Completed appointment 'A0155' is missing from billing_log.csv (unreconciled / late entry).,FLAG_UNRECONCILED_REVENUE
+ISS-0031,billing_log.csv,A0001,UNRECONCILED_BILLING,WARNING,Completed appointment 'A0001' is missing from billing_log.csv (unreconciled / late entry).,FLAG_UNRECONCILED_REVENUE
+ISS-0032,billing_log.csv,A0196,UNRECONCILED_BILLING,WARNING,Completed appointment 'A0196' is missing from billing_log.csv (unreconciled / late entry).,FLAG_UNRECONCILED_REVENUE
+ISS-0033,billing_log.csv,A0053,UNRECONCILED_BILLING,WARNING,Completed appointment 'A0053' is missing from billing_log.csv (unreconciled / late entry).,FLAG_UNRECONCILED_REVENUE
+ISS-0034,billing_log.csv,A0063,UNRECONCILED_BILLING,WARNING,Completed appointment 'A0063' is missing from billing_log.csv (unreconciled / late entry).,FLAG_UNRECONCILED_REVENUE
+ISS-0035,billing_log.csv,A0054,UNRECONCILED_BILLING,WARNING,Completed appointment 'A0054' is missing from billing_log.csv (unreconciled / late entry).,FLAG_UNRECONCILED_REVENUE
+ISS-0036,billing_log.csv,A0211,UNRECONCILED_BILLING,WARNING,Completed appointment 'A0211' is missing from billing_log.csv (unreconciled / late entry).,FLAG_UNRECONCILED_REVENUE
+ISS-0037,billing_log.csv,A0060,UNRECONCILED_BILLING,WARNING,Completed appointment 'A0060' is missing from billing_log.csv (unreconciled / late entry).,FLAG_UNRECONCILED_REVENUE
+ISS-0038,billing_log.csv,A0138,UNRECONCILED_BILLING,WARNING,Completed appointment 'A0138' is missing from billing_log.csv (unreconciled / late entry).,FLAG_UNRECONCILED_REVENUE
+ISS-0039,billing_log.csv,A0139,UNRECONCILED_BILLING,WARNING,Completed appointment 'A0139' is missing from billing_log.csv (unreconciled / late entry).,FLAG_UNRECONCILED_REVENUE
+ISS-0040,billing_log.csv,A0034,UNRECONCILED_BILLING,WARNING,Completed appointment 'A0034' is missing from billing_log.csv (unreconciled / late entry).,FLAG_UNRECONCILED_REVENUE
+ISS-0041,billing_log.csv,A0025,UNRECONCILED_BILLING,WARNING,Completed appointment 'A0025' is missing from billing_log.csv (unreconciled / late entry).,FLAG_UNRECONCILED_REVENUE
+ISS-0042,billing_log.csv,A0161,UNRECONCILED_BILLING,WARNING,Completed appointment 'A0161' is missing from billing_log.csv (unreconciled / late entry).,FLAG_UNRECONCILED_REVENUE
+ISS-0043,billing_log.csv,A0185,UNRECONCILED_BILLING,WARNING,Completed appointment 'A0185' is missing from billing_log.csv (unreconciled / late entry).,FLAG_UNRECONCILED_REVENUE
+ISS-0044,billing_log.csv,A0159,UNRECONCILED_BILLING,WARNING,Completed appointment 'A0159' is missing from billing_log.csv (unreconciled / late entry).,FLAG_UNRECONCILED_REVENUE
+ISS-0045,billing_log.csv,A0091,UNRECONCILED_BILLING,WARNING,Completed appointment 'A0091' is missing from billing_log.csv (unreconciled / late entry).,FLAG_UNRECONCILED_REVENUE
+ISS-0046,billing_log.csv,A0200,UNRECONCILED_BILLING,WARNING,Completed appointment 'A0200' is missing from billing_log.csv (unreconciled / late entry).,FLAG_UNRECONCILED_REVENUE
+ISS-0047,cross_system,ALL_KIOSK_PATIENTS,PATIENT_ID_FORMAT_MISMATCH,AUDIT_NOTE,[Systemic Schema Pattern] Kiosk system exports numeric-only patient IDs across all 179 scheduled patients (e.g. '212' vs 'PT0212' in scheduling.db). Resolved via deterministic prefix padding in modeling.,STANDARDIZE_IN_MODELING
