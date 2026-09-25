@@ -230,19 +230,3 @@ python3 run_pipeline.py     # Halts with clear error message and exit code 1
 mv raw/scheduling.db.bak raw/scheduling.db
 ```
 
----
-
-## 7. 3–5 Minute Walkthrough Demo Script
-
-*Use this outline when presenting the project to stakeholders or evaluators:*
-
-1. **Problem Framing (0:00 – 0:45)**:
-   - "Clinic leadership noticed severe patient wait times and billing leaks, but data was trapped across 3 disparate systems: an SQLite booking DB, a JSON kiosk stream, and a CSV billing log."
-2. **Architecture & Multi-Source Ingestion (0:45 – 1:30)**:
-   - "We built a multi-modal ingestion engine that queries SQLite via SQL, parses JSON telemetry, and streams CSVs without modifying raw files, generating a completeness manifest on every run."
-3. **Core FDE Judgment Call — Compounding Anomalies vs. Surgical Quarantine (1:30 – 3:00)**:
-   - *"Here is the key engineering trade-off we made"*:
-     - **Out-of-Order Swaps**: When `triage_start < check_in` occurred on 5 records, we did not discard the entire visit. We surgically quarantined `wait_checkin_to_triage` while preserving valid downstream consult durations.
-     - **Duplicate Telemetry Collisions (`A0151`, `A0077`, etc.)**: Front-desk duplicate booking IDs created 10 colliding kiosk events for 4 completed appointments. Because the raw telemetry stream contains **no session ID, device ID, or transaction marker**, there is zero physical signal to disambiguate which 5 events correspond to the true clinical encounter versus the phantom double-entry. Rather than fabricating an arbitrary heuristic (e.g. picking earlier or later scans), we quarantined all interval calculations for these 4 records, logged an explicit audit issue in `validation_issues.csv`, and preserved the underlying booking metadata.
-4. **Actionable Business Decision (3:00 – 4:00)**:
-   - "Our metrics prove that wait times are evenly split between Triage (19.8 min) and Doctor Handoff (20.6 min), but late-afternoon delays swell by 23% because 47.4% of consults overrun the default 20-minute slot. The clinic can immediately fix this by extending initial consult slots to 30 minutes and staffing an extra triage nurse from 11:00 AM onwards."
