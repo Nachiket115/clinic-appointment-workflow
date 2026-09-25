@@ -1,0 +1,17 @@
+# Python compiled bytecode & cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Environment & IDE
+.venv/
+env/
+venv/
+.env
+.vscode/
+.idea/
+.DS_Store
+
+# Scratch & temporary test files
+scratch/
