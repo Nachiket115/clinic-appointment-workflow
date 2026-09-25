@@ -165,13 +165,13 @@ erDiagram
 * **Dr. Alvarez**: 52.8% consult overruns | **22.4 min** triage-to-doctor wait | 20.0% no-show rate
 * **Dr. Chen**: 51.2% consult overruns | **20.8 min** triage-to-doctor wait | 5.9% no-show rate
 * **Dr. Okafor**: 42.2% consult overruns | **20.3 min** triage-to-doctor wait | 12.1% no-show rate
-* **Dr. Patel**: 45.9% consult overruns | **18.9 min** triage-to-doctor wait | 14.0% no-show rate
+* **Dr. Patel**: 45.5% consult overruns | **19.0 min** triage-to-doctor wait | 12.7% no-show rate
 
-#### By Time of Day (Bottleneck Progression):
-* **08:00 – 10:00 (Morning)**: Combined avg wait = **36.2 mins**
-* **11:00 – 13:00 (Midday)**: Combined avg wait = **41.8 mins**
-* **14:00 – 15:00 (Afternoon)**: Combined avg wait = **44.6 mins**  
-*(Finding: Wait times compound by ~23% as consult overruns cascade into afternoon schedule delays).*
+#### By Time of Day (Bottleneck Analysis):
+* **08:00 – 10:00 (Morning)**: Combined avg wait = **41.6 mins**
+* **11:00 – 13:00 (Midday Window)**: Combined avg wait = **36.1 mins**
+* **14:00 – 15:00 (Late Afternoon)**: Combined avg wait = **42.6 mins** (peaking at **46.8 mins** for the 15:00 slot)  
+*(Finding: Wait times are not smoothly increasing through the day — they dip at midday and peak in the final hour (15:00 slot: 46.8 min average combined wait, the highest of any hour), suggesting late-day scheduling density rather than pure fatigue-driven compounding).*
 
 ---
 
@@ -229,4 +229,3 @@ mv raw/scheduling.db raw/scheduling.db.bak
 python3 run_pipeline.py     # Halts with clear error message and exit code 1
 mv raw/scheduling.db.bak raw/scheduling.db
 ```
-
