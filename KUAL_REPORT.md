@@ -1,7 +1,7 @@
 # Known, Unknown, Assumption, and Limitation (KUAL) Report
 
 > **Project**: Clinic Appointment Workflow & Operational KPI Pipeline  
-> **Author**: FDE - Nachiketas Iyer
+> **Author**: Nachiketas Iyer (Forward Deployed Engineer)  
 > **Target Audience**: Clinic Leadership, Clinical Operations, Lead Data Engineer  
 
 ---
@@ -66,6 +66,8 @@ These data points cannot be determined from the available client datasets and re
    - Billing logs contain codes suggesting variable clinical intensity (`GEN-20`, `GEN-40`, `FOLLOWUP-15`). However, because scheduling.db lacks slot-length metadata, consult overruns are evaluated uniformly against 20 minutes.
 3. **Sample Size for Provider-Level Metrics**:
    - With ~50 appointments per doctor over a 2-week observation window, provider-level rates should be interpreted as directional rather than statistically definitive. The sample size is too small for strong statistical confidence without multi-month pooling.
+4. **Duplicate Billing Log Records**:
+   - The 4 duplicate front-desk bookings also produced duplicate rows in `billing_log.csv` with differing billing codes and durations. While this does not impact our operational KPI pipeline (which strictly uses physical kiosk telemetry for consult durations rather than billing claims), any financial analysis summing `billed_minutes` would require primary-key deduplication prior to revenue calculations.
 
 ---
 
