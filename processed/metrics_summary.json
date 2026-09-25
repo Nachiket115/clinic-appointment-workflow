@@ -1,0 +1,184 @@
+{
+  "project_kpi_question": "Where does patient wait time accumulate, and which factors predict a longer wait?",
+  "generated_at": "2026-09-25T13:55:18.568096",
+  "headline_metrics": {
+    "metric_1_avg_wait_checkin_to_triage": {
+      "metric_name": "avg_wait_checkin_to_triage_minutes",
+      "description": "Average duration (minutes) from patient kiosk check-in to nurse triage start.",
+      "average_minutes": 19.8,
+      "valid_sample_count": 166,
+      "total_scheduled_appointments": 220,
+      "exclusions": {
+        "no_show_or_cancelled": 41,
+        "quarantined_out_of_order": 5,
+        "unresolvable_duplicate_stream": 4,
+        "missing_sensor_scan": 4,
+        "total_excluded": 54
+      },
+      "formula": "sum(valid_wait_checkin_to_triage_mins) / count(valid_completed_appointments)"
+    },
+    "metric_2_avg_wait_triage_to_consult": {
+      "metric_name": "avg_wait_triage_to_consult_minutes",
+      "description": "Average duration (minutes) from triage completion to doctor consultation start.",
+      "average_minutes": 20.57,
+      "valid_sample_count": 173,
+      "total_scheduled_appointments": 220,
+      "exclusions": {
+        "no_show_or_cancelled": 41,
+        "unresolvable_duplicate_stream": 4,
+        "missing_sensor_scan": 2,
+        "total_excluded": 47
+      },
+      "formula": "sum(valid_wait_triage_to_consult_mins) / count(valid_completed_appointments)"
+    },
+    "metric_3_no_show_rate": {
+      "metric_name": "no_show_rate_percent",
+      "description": "Percentage of booked appointments where patient never arrived/checked in.",
+      "rate_percent": 12.73,
+      "no_show_count": 28,
+      "total_scheduled_appointments": 220,
+      "formula": "(count(status == 'no_show') / count(total_scheduled_appointments)) * 100"
+    },
+    "metric_4_consult_overrun_rate": {
+      "metric_name": "consult_overrun_rate_percent",
+      "description": "Percentage of completed consultations exceeding the 20.0-minute scheduled slot benchmark.",
+      "overrun_rate_percent": 47.37,
+      "overrun_count": 81,
+      "valid_consult_count": 171,
+      "avg_actual_consult_duration_minutes": 19.73,
+      "standard_slot_minutes": 20.0,
+      "exclusions": {
+        "no_show_or_cancelled": 41,
+        "unresolvable_duplicate_stream": 4,
+        "missing_sensor_scan": 4,
+        "total_excluded": 49
+      },
+      "formula": "(count(consult_duration > 20.0) / count(valid_consult_durations)) * 100"
+    },
+    "metric_5_cancellation_rate": {
+      "metric_name": "cancellation_rate_percent",
+      "description": "Percentage of booked appointments cancelled prior to or on appointment day.",
+      "rate_percent": 5.91,
+      "cancelled_count": 13,
+      "total_scheduled_appointments": 220,
+      "formula": "(count(status == 'cancelled') / count(total_scheduled_appointments)) * 100"
+    }
+  },
+  "dimensional_breakdowns": {
+    "by_doctor": {
+      "Dr. Alvarez": {
+        "total_booked": 50,
+        "completed": 36,
+        "no_shows": 10,
+        "no_show_rate_pct": 20.0,
+        "avg_wait_checkin_to_triage_mins": 20.4,
+        "avg_wait_triage_to_consult_mins": 22.4,
+        "avg_consult_duration_mins": 19.9,
+        "consult_overrun_rate_pct": 52.8,
+        "valid_consult_samples": 36
+      },
+      "Dr. Chen": {
+        "total_booked": 51,
+        "completed": 43,
+        "no_shows": 3,
+        "no_show_rate_pct": 5.9,
+        "avg_wait_checkin_to_triage_mins": 20.5,
+        "avg_wait_triage_to_consult_mins": 20.8,
+        "avg_consult_duration_mins": 20.2,
+        "consult_overrun_rate_pct": 51.2,
+        "valid_consult_samples": 41
+      },
+      "Dr. Okafor": {
+        "total_booked": 58,
+        "completed": 48,
+        "no_shows": 7,
+        "no_show_rate_pct": 12.1,
+        "avg_wait_checkin_to_triage_mins": 18.8,
+        "avg_wait_triage_to_consult_mins": 20.3,
+        "avg_consult_duration_mins": 19.6,
+        "consult_overrun_rate_pct": 42.2,
+        "valid_consult_samples": 45
+      },
+      "Dr. Patel": {
+        "total_booked": 55,
+        "completed": 47,
+        "no_shows": 7,
+        "no_show_rate_pct": 12.7,
+        "avg_wait_checkin_to_triage_mins": 19.5,
+        "avg_wait_triage_to_consult_mins": 19.0,
+        "avg_consult_duration_mins": 19.5,
+        "consult_overrun_rate_pct": 45.5,
+        "valid_consult_samples": 44
+      },
+      "Unassigned": {
+        "total_booked": 6,
+        "completed": 5,
+        "no_shows": 1,
+        "no_show_rate_pct": 16.7,
+        "avg_wait_checkin_to_triage_mins": 22.5,
+        "avg_wait_triage_to_consult_mins": 21.8,
+        "avg_consult_duration_mins": 17.2,
+        "consult_overrun_rate_pct": 40.0,
+        "valid_consult_samples": 5
+      }
+    },
+    "by_scheduled_hour": {
+      "08:00": {
+        "scheduled_appointments": 28,
+        "avg_wait_checkin_to_triage_mins": 20.1,
+        "avg_wait_triage_to_consult_mins": 22.4,
+        "avg_combined_wait_mins": 40.4,
+        "sample_size": 21
+      },
+      "09:00": {
+        "scheduled_appointments": 25,
+        "avg_wait_checkin_to_triage_mins": 19.8,
+        "avg_wait_triage_to_consult_mins": 22.7,
+        "avg_combined_wait_mins": 43.0,
+        "sample_size": 18
+      },
+      "10:00": {
+        "scheduled_appointments": 31,
+        "avg_wait_checkin_to_triage_mins": 22.2,
+        "avg_wait_triage_to_consult_mins": 19.5,
+        "avg_combined_wait_mins": 41.6,
+        "sample_size": 27
+      },
+      "11:00": {
+        "scheduled_appointments": 17,
+        "avg_wait_checkin_to_triage_mins": 20.1,
+        "avg_wait_triage_to_consult_mins": 16.2,
+        "avg_combined_wait_mins": 35.3,
+        "sample_size": 13
+      },
+      "12:00": {
+        "scheduled_appointments": 24,
+        "avg_wait_checkin_to_triage_mins": 18.2,
+        "avg_wait_triage_to_consult_mins": 17.3,
+        "avg_combined_wait_mins": 34.5,
+        "sample_size": 15
+      },
+      "13:00": {
+        "scheduled_appointments": 34,
+        "avg_wait_checkin_to_triage_mins": 20.0,
+        "avg_wait_triage_to_consult_mins": 17.4,
+        "avg_combined_wait_mins": 37.5,
+        "sample_size": 23
+      },
+      "14:00": {
+        "scheduled_appointments": 28,
+        "avg_wait_checkin_to_triage_mins": 14.5,
+        "avg_wait_triage_to_consult_mins": 22.8,
+        "avg_combined_wait_mins": 37.9,
+        "sample_size": 22
+      },
+      "15:00": {
+        "scheduled_appointments": 33,
+        "avg_wait_checkin_to_triage_mins": 22.6,
+        "avg_wait_triage_to_consult_mins": 24.2,
+        "avg_combined_wait_mins": 46.8,
+        "sample_size": 25
+      }
+    }
+  }
+}
