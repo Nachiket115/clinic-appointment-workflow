@@ -1,6 +1,6 @@
 {
   "project_kpi_question": "Where does patient wait time accumulate, and which factors predict a longer wait?",
-  "generated_at": "2026-09-25T13:55:18.568096",
+  "generated_at": "2026-09-25T16:22:50.818017",
   "headline_metrics": {
     "metric_1_avg_wait_checkin_to_triage": {
       "metric_name": "avg_wait_checkin_to_triage_minutes",
